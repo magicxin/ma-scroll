@@ -26,4 +26,4 @@ npm install ma-scroll -save
 | allLoaded | false | Bollean | 是否全部加载完毕 |
 | refresh | false | function | 下拉刷新函数 |
 | showMsg | false | Bollean | 是否需要描述文字 |
-| init |  | true | 初始化iscroll |
+| init | true | Bollean | 初始化iscroll |
