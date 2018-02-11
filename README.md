@@ -1,10 +1,11 @@
-#依赖vue.js iscroll5
+# 依赖
+> **vue.js iscroll5
 
 # 简介
-ma-scroll是一个基于vue与iscroll5的移动下拉刷新，上拉加载组件
+> **ma-scroll是一个基于vue与iscroll5的移动下拉刷新，上拉加载组件
 
 # 安装
-npm install ma-scroll -save
+> **npm install ma-scroll -save
 
 # 使用
 > **main.js 文件下**
