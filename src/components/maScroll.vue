@@ -35,6 +35,9 @@
         default () {
           return false
         }
+      },
+      init:{
+      	type: Boolean
       }
     },
     methods:{
@@ -43,12 +46,16 @@
      watch: {
      	allLoaded(newValue,oldValue){
 	    	this.pullup = newValue
+	   },
+	   init(newValue,oldValue){
+	   		return newValue
 	   }
 	  },
     data () {
       return {
         pullup:false,
-        pulldown:false
+        pulldown:false,
+        once:true
       }
     },
     methods: {//取可以滚动的元素
@@ -69,6 +76,11 @@
 						}
 						if(myScroll.y < myScroll.maxScrollY - 40){
 							that.pullup = true
+						}
+						
+						if(that.init === true & that.once === true){
+							myScroll.refresh()
+							that.once = false
 						}
 					})
 					

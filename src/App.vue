@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    	<scroll :showMsg="true" :getMore="loadMore" :refresh="refresh" :allLoaded="allLoaded">
+    	<scroll :showMsg="true" :getMore="loadMore" :refresh="refresh" :allLoaded="allLoaded" :init="init">
     		<ul v-html="element">
     			
     		</ul>
@@ -14,61 +14,70 @@ export default {
   name: 'app',
   data () {
     return {
-      element:
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>"+
-    		"<li>11</li>",
+      element:'',
     		allLoaded:false,
-    		i : 1
+    		i : 1,
+    		init:false
     }
   },
   components:{
   	scroll
+  },
+  created(){
+  	let that = this
+  	setTimeout(function(){
+  		that.element = "<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>"+
+    		"<li>11</li>";
+    		
+    		that.init = true
+  	},2000)
+  	
   },
   methods:{
   	loadMore(){
