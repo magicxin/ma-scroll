@@ -3,7 +3,9 @@
   	<div class="scroller">
   		<slot></slot>
   		<div v-if="showMsg">
-	      	<div v-if="!loaded" class="loadmore">下拉查看更多~</div>
+  				<div v-if="refresh && !pulldown" class="loadmore">下拉刷新~</div>
+  				<div v-if="refresh && pulldown" class="loadmore">松开刷新~</div>
+	      	<div v-if="getMore" class="loadover">上拉查看更多~</div>
 	      	<div v-else class="loadover">我是有底线的~</div>
 	    </div>
   	</div>
@@ -25,6 +27,9 @@
           return false
         }
       },
+      refresh:{
+      	type: Function
+      },
       showMsg: {
       	type: Boolean,
         default () {
@@ -37,12 +42,13 @@
     },
      watch: {
      	allLoaded(newValue,oldValue){
-	    	this.loaded = newValue
+	    	this.pullup = newValue
 	   }
 	  },
     data () {
       return {
-        loaded:false,
+        pullup:false,
+        pulldown:false
       }
     },
     methods: {//取可以滚动的元素
@@ -57,15 +63,33 @@
 					});
 					
 					myScroll.on('scroll', ()=>{
-						console.log(myScroll.y)
-//						if(myScroll.wrapperHeight - myScroll.y + 10 >= myScroll.scrollerHeight){
-//							that.getMore()
-//							.then(()=>{
-//								setTimeout(function(){
-//									myScroll.refresh()
-//								},10)
-//							})
-//						}
+						console.log(that.pulldown)
+						if(myScroll.y > 40){
+							that.pulldown = true
+						}
+						if(myScroll.y < myScroll.maxScrollY - 40){
+							that.pullup = true
+						}
+					})
+					
+					myScroll.on('scrollEnd', ()=>{
+						if(that.pulldown == true){
+							that.refresh()
+							.then(()=>{
+									that.pulldown = false
+									myScroll.refresh()
+							})
+						}
+						
+						if(that.pullup == true){
+							that.getMore()
+							.then(()=>{
+								setTimeout(function(){
+									that.pullup = false
+									myScroll.refresh()
+								},10)
+							})
+						}
 					})
 					
     }
@@ -91,12 +115,15 @@
 }
 
 .scroller {
+		position:relative;
   	width:90%;
   	display:flex;
   	flex-flow:column;
   	margin:0 auto;
   }
 #wrapper .loadmore{
+		position:absolute;
+  	top:-35px;
   	height:100%;
   	width: 100%;
   	height: 35px;
@@ -105,6 +132,8 @@
   	color: #bdbdbd;
   }
   #wrapper .loadover{
+  	position:absolute;
+  	bottom:-35px;
   	width: 100%;
   	height: 35px;
   	text-align: center;
