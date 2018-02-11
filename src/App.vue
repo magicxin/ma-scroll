@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    	<scroll :showMsg="true" :getMore="loadMore" :refresh="refresh" :allLoaded="allLoaded" :init="init">
+    	<scroll :showMsg="true" :up="true" :down="true" :getMore="loadMore" :refresh="refresh" :allLoaded="allLoaded" :init="init">
     		<ul v-html="element">
     			
     		</ul>
@@ -90,7 +90,7 @@ export default {
   	},
   	refresh(){
   		return new Promise(function(resolve,reject){
-  				console.log(111)
+//				console.log(111)
   				resolve()
   		})
   	}

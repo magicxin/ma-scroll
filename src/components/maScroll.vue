@@ -3,10 +3,10 @@
   	<div class="scroller">
   		<slot></slot>
   		<div v-if="showMsg">
-  				<div v-if="refresh && !pulldown" class="loadmore">下拉刷新~</div>
-  				<div v-if="refresh && pulldown" class="loadmore">松开刷新~</div>
-	      	<div v-if="getMore" class="loadover">上拉查看更多~</div>
-	      	<div v-else class="loadover">我是有底线的~</div>
+  				<div v-if="up && !pulldown" class="loadmore">下拉刷新~</div>
+  				<div v-if="up && pulldown" class="loadmore">松开刷新~</div>
+	      	<div v-if="down && !allLoaded" class="loadover">上拉查看更多~</div>
+	      	<div v-if="down && allLoaded" class="loadover">我是有底线的~</div>
 	    </div>
   	</div>
   </div>
@@ -29,6 +29,20 @@
         default () {
           return false
         }
+      },
+      up:{
+      	type: Boolean,
+        default () {
+          return false
+        }
+
+      },
+      down:{
+      	type: Boolean,
+        default () {
+          return false
+        }
+
       },
       refresh:{
       	type: Function,
@@ -76,7 +90,7 @@
 					});
 					
 					myScroll.on('scroll', ()=>{
-						console.log(that.pulldown)
+//						console.log(that.pulldown)
 						if(myScroll.y > 40){
 							that.pulldown = true
 						}
@@ -91,7 +105,7 @@
 					})
 					
 					myScroll.on('scrollEnd', ()=>{
-						if(that.pulldown == true && that.refresh){
+						if(that.pulldown == true && that.up){
 							that.refresh()
 							.then(()=>{
 									that.pulldown = false
@@ -99,7 +113,7 @@
 							})
 						}
 						
-						if(that.pullup == true that.getMore){
+						if(that.pullup == true && that.down){
 							that.getMore()
 							.then(()=>{
 								setTimeout(function(){
