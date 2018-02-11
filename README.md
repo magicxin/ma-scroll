@@ -7,18 +7,19 @@ ma-scroll是一个基于vue与iscroll5的移动下拉刷新，上拉加载组件
 npm install ma-scroll -save
 
 #使用
-**main.js 文件下
+> **main.js 文件下**
 
-import Vue from 'vue'
+> **import Vue from 'vue'**
 
-import maScroll from 'ma-scroll'
+> **import maScroll from 'ma-scroll'**
 
-Vue.use(maScroll)
+> **Vue.use(maScroll)**
 
-<ma-scroll></ma-scroll>**
+> **<ma-scroll></ma-scroll>**
 
 *参数
 | 参数 | 必填 | 类型 | 描述 |
+|:-------:|:-------:|:-------:|
 | up | false | Bollean | 是否需要上拉加载 |
 | down | false | Bollean | 是否需要下拉刷新 |
 | getMore | false | function | 加载的函数 |
