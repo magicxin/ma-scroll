@@ -18,6 +18,7 @@ npm install ma-scroll -save
 > **<ma-scroll></ma-scroll>**
 
 *参数
+
 | 参数 | 必填 | 类型 | 描述 |
 |:-------:|:-------:|:-------:|
 | up | false | Bollean | 是否需要上拉加载 |
