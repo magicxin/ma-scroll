@@ -2,7 +2,7 @@
   "name": "ma-scroll",
   "description": "A Vue.js component",
   "main": "dist/ma-scroll.js",
-  "version": "0.0.10",
+  "version": "0.1.3",
   "author": "magic_xin",
   "license": "MIT",
   "private": false,

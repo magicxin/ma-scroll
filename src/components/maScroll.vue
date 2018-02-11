@@ -19,7 +19,10 @@
     name: 'ma-scroll',
     props: {
       getMore: {
-        type: Function
+        type: Function,
+        default () {
+          return false
+        }
       },
       allLoaded: {
         type: Boolean,
@@ -28,7 +31,10 @@
         }
       },
       refresh:{
-      	type: Function
+      	type: Function,
+        default () {
+          return false
+        }
       },
       showMsg: {
       	type: Boolean,
@@ -85,7 +91,7 @@
 					})
 					
 					myScroll.on('scrollEnd', ()=>{
-						if(that.pulldown == true){
+						if(that.pulldown == true && that.refresh){
 							that.refresh()
 							.then(()=>{
 									that.pulldown = false
@@ -93,7 +99,7 @@
 							})
 						}
 						
-						if(that.pullup == true){
+						if(that.pullup == true that.getMore){
 							that.getMore()
 							.then(()=>{
 								setTimeout(function(){
