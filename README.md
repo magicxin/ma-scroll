@@ -53,3 +53,7 @@ refresh(){
 		resolve()
 })
 ```
+
+## 注意事项
+使用ajax加载数据，需要在请求成功后，将init参数置为true。
+loadMore和refresh函数，需要返回Promise对象，因为组件内调用的是loadMore.then，成功后的回调，用以刷新iscroll。
