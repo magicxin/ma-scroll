@@ -30,3 +30,26 @@
 | refresh | false | function | 下拉刷新函数 |
 | showMsg | false | Bollean | 是否需要描述文字 |
 | init | true | Bollean | 初始化iscroll |
+
+## 页面引用
+
+> **template
+```
+<ma-scroll :showMsg="true" :up="true" :down="true" :getMore="loadMore" :refresh="refresh" :init="init">
+</ma-scroll>
+```
+> **js
+
+```
+loadMore(){
+		let that = this
+		return new Promise(function(resolve,reject){
+		that.elements.push(that.elements.length)
+		resolve()
+	})
+},
+refresh(){
+		return new Promise(function(resolve,reject){
+		resolve()
+})
+```
