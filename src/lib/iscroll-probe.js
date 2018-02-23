@@ -262,19 +262,74 @@ var utils = (function () {
 			// initMouseEvent is deprecated.
 			ev = document.createEvent(window.MouseEvent ? 'MouseEvents' : 'Event');
 			ev.initEvent('click', true, true);
-			ev.view = e.view || window;
-			ev.detail = 1;
-			ev.screenX = target.screenX || 0;
-			ev.screenY = target.screenY || 0;
-			ev.clientX = target.clientX || 0;
-			ev.clientY = target.clientY || 0;
-			ev.ctrlKey = !!e.ctrlKey;
-			ev.altKey = !!e.altKey;
-			ev.shiftKey = !!e.shiftKey;
-			ev.metaKey = !!e.metaKey;
-			ev.button = 0;
-			ev.relatedTarget = null;
-			ev._constructed = true;
+			Object.defineProperties(ev,{
+				view:{
+					value: e.view || window,
+   					writable: true
+				},
+				detail:{
+					value: 1,
+   					writable: true
+				},
+				screenX:{
+					value: target.screenX || 0,
+   					writable: true
+				},
+				screenY:{
+					value: target.screenY || 0,
+   					writable: true
+				},
+				clientX:{
+					value: target.clientX || 0,
+   					writable: true
+				},
+				clientY:{
+					value: target.clientY || 0,
+   					writable: true
+				},
+				ctrlKey:{
+					value: !!e.ctrlKey,
+   					writable: true
+				},
+				altKey:{
+					value: !!e.altKey,
+   					writable: true
+				},
+				shiftKey:{
+					value: !!e.shiftKey,
+   					writable: true
+				},
+				metaKey:{
+					value: !!e.metaKey,
+   					writable: true
+				},
+				button:{
+					value: 0,
+   					writable: true
+				},
+				relatedTarget:{
+					value: null,
+   					writable: true
+				},
+				_constructed:{
+					value: true,
+   					writable: true
+				}
+			})
+			
+//			ev.view = e.view || window;
+//			ev.detail = 1;
+//			ev.screenX = target.screenX || 0;
+//			ev.screenY = target.screenY || 0;
+//			ev.clientX = target.clientX || 0;
+//			ev.clientY = target.clientY || 0;
+//			ev.ctrlKey = !!e.ctrlKey;
+//			ev.altKey = !!e.altKey;
+//			ev.shiftKey = !!e.shiftKey;
+//			ev.metaKey = !!e.metaKey;
+//			ev.button = 0;
+//			ev.relatedTarget = null;
+//			ev._constructed = true;
 			target.dispatchEvent(ev);
 		}
 	};
