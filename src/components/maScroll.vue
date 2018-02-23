@@ -95,6 +95,8 @@
 						setTimeout(function(){
 							if(document.getElementsByClassName('scroller')[0].scrollHeight < myScroll.scrollerHeight){
 									that.notFull = true
+								}else{
+									that.notFull = false
 								}
 								
 								if(document.getElementsByClassName('scroller')[0].scrollHeight >= 35){
