@@ -3,10 +3,10 @@
   	<div class="scroller">
   		<slot></slot>
   		<div v-if="showMsg">
-  				<div v-if="up && !pulldown && !hidePulldown" class="loadmore">下拉刷新~</div>
-  				<div v-if="up && pulldown && !hidePulldown" class="loadmore">松开刷新~</div>
-	      	<div v-if="down && !allLoaded  && !notFull" class="loadover">上拉查看更多~</div>
-	      	<div v-if="down && allLoaded && !notFull" class="loadover">我是有底线的~</div>
+  				<div v-if="up && !pulldown" class="loadmore">下拉刷新~</div>
+  				<div v-if="up && pulldown" class="loadmore">松开刷新~</div>
+	      	<div v-if="down && !allLoaded" class="loadover">上拉查看更多~</div>
+	      	<div v-if="down && allLoaded" class="loadover">我是有底线的~</div>
 	    </div>
   	</div>
   </div>
@@ -76,8 +76,8 @@
         pullup:false,
         pulldown:false,
         once:true,
-        notFull:false,
-        hidePulldown:true
+//      notFull:false,
+//      hidePulldown:true
       }
     },
     methods: {//取可以滚动的元素
@@ -92,18 +92,18 @@
 					});
 					
 					//加入延时，保证dom已加载完成
-						setTimeout(function(){
-							if(document.getElementsByClassName('scroller')[0].scrollHeight < myScroll.scrollerHeight){
-									that.notFull = true
-								}else{
-									that.notFull = false
-								}
-								
-								if(document.getElementsByClassName('scroller')[0].scrollHeight >= 35){
-									that.hidePulldown = false
-									myScroll.refresh()
-								}
-						},20)
+//						setTimeout(function(){
+//							if(document.getElementsByClassName('scroller')[0].scrollHeight < myScroll.scrollerHeight){
+//									that.notFull = true
+//								}else{
+//									that.notFull = false
+//								}
+//								
+//								if(document.getElementsByClassName('scroller')[0].scrollHeight >= 35){
+//									that.hidePulldown = false
+//									myScroll.refresh()
+//								}
+//						},20)
 						
 					myScroll.on('scroll', ()=>{
 //						console.log(that.pulldown)
